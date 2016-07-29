@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sure Park System</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<form method="post" action="/login">
+    <h1>Sure Park</h1>
+    <input type=text length=10 placeholder="ID" name="id"/><br/><br/>
+    <input type=password length=10 placeholder="PW" name="pw"/><br/><br/>
+    <table>
+    <tr>
+    <td valign="top">
+    <input type="submit" value="Login"/>
+    </td>
+    <td align="right">
+    <input type="button" onclick="reg1();" value="Sign Up"/></br></br>
+    <input type="button" onclick="reg3();" value="Chart"/>
+    </td></tr></table>
+</form>
+<form method="post" name="form2" action="/signup">
+    
+</form>
+<form method="post" name="form3" action="/bussignup">
+    
+</form>
+<form method="get" name="form4" action="/index2">
+    
+</form>
+
+  </body>
+  <script>
+  function reg1(){
+	  document.form2.submit();
+  }
+  function reg2(){
+	  document.form3.submit();
+  }
+  function reg3(){
+	  document.form4.submit();
+  }
+  </script>
+</html>

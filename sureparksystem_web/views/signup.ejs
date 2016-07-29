@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sure Park System</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+<script>
+function loginchk(){
+ var regx = /^[a-zA-Z0-9]*$/;
+ var id = document.form1.USER_ID.value;
+ var pass = document.form1.PASSWORD.value;
+ if (id.length == 0 || id == null) {
+  alert("Please enter your ID.");
+  document.form1.id.focus();
+  return false;
+ }else if (!regx.test(id)){
+  alert("Please enter a valid ID.");
+  document.form1.id.focus();
+  return false;
+ }else if (pass.length < 8 || pass == null) {
+  alert("Your password must be at least 8 characters.");
+  document.form1.pass.focus();
+  return false;
+ }else if (!regx.test(pass)){
+  alert("Password only characters or number.");
+  document.form1.pass.focus();
+  return false;
+ }else if (pass.length == 0 || pass == null) {
+	  alert("Please enter your password.");
+	  document.form1.id.focus();
+	  return false;
+	 }
+ 
+ document.form1.submit();
+}
+</script>
+
+</head>
+<body>
+	<form method="post" action="/insertuser" name="form1">
+		<h1>Registration</h1>
+		<div style="float:left;margin-right:20px;">
+		<h3>User information</h3>
+		<hr align="left" width="160px">
+				<div>NAME</div><div><input type="text" id="USER_NAME" name="USER_NAME"/></div></br>
+				<div>PHONE</div><div><input type="text" id="USER_PHONE" name="USER_PHONE"/></div></br>
+				<div>ID</div><div><input type="text" id="USER_ID" name="USER_ID"/></div></br>
+				<div>PASSWORD</div><div><input type="password" id="PASSWORD" name="PASSWORD"/></div></br>
+				<div>CERTIFICATION ID</div><div><input type="text" id="certifi_id" name="certifi_id"/></div>
+		</br>
+		</div>
+		
+		<div style="float:left;margin-right:20px;margin-bottom:10px;">
+		<h3>Billing information</h3>
+		<hr align="left" width="160px">
+				<div>Card Number</div><div><input type="text" id="card_num" name="card_num" maxlength="16"/></div></br>
+				<div>CVC</div><div><input type="text" id="cvc" name="cvc" maxlengt="3"/></div></br>
+				<div>
+				Expiration</div><div>
+				<select name="month">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				</select>
+				<input type="text" name="yaer" maxlength="4" size="4" />
+				</div>
+				</div>
+				</br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+			<div  style="float:left;"><input type="button" onclick="loginchk();" value="Done" /><input type="button" onclick="history.back();" value="Cancel" /></div>
+	</form>
+</body>
+</html>

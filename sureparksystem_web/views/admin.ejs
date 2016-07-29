@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Sure Park System</title>
+  </head>
+  <body>
+    <h2 class="ui teal image header">
+      Sure Park System
+    </h2>
+    <form method="post" action="/login">
+		<table border="1" cellpadding="10">
+		<tr>
+		<td></td><td>User Name</td><td>User ID</td><td>User Email</td>
+		</tr>
+			<% for(var i = 0; i < results.length; i++){ %>
+			<tr>
+				<td><input type=radio name="selpark"
+					value="<%=results[i].NUM %>" /></td>
+				<td><%=results[i].USER_NAME %></td>
+				<td><%=results[i].USER_ID %></td>
+				<td><%=results[i].USER_EMAIL %></td>
+			</tr>
+			<%}%>
+		</table>
+		</form>
+     <a href="/logout">Logout</a>
+  </body>
+</html>

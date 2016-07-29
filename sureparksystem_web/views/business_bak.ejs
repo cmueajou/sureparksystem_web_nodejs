@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+<body>
+	<h1>Business Menu</h1>
+	<table border="0" cellpadding="15">
+		<tr>
+			<td bgcolor="#334455" align="center" width="100px"><font color="#FFFFFF">Status</br>Informaion</font></br>
+			</br>
+			</br>
+			</br> <input type="button" value="Select" onclick="reg1();" /></td>
+			<td bgcolor="#554433" align="center" width="100px"><font color="#FFFFFF">Branch</br>Registration</font></br>
+			</br>
+			</br>
+			</br> <input type="button" value="Select" onclick="reg2();" /></td>
+		</tr>
+	</table>
+</body>
+<form name="form1" action="/index2" method="get"></form>
+<form name="form2" action="/branchreg" method="post"></form>
+<script>
+function reg1(){
+	document.form1.submit();
+}
+function reg2(){
+	document.form2.submit();	
+}
+</script>
+</html>

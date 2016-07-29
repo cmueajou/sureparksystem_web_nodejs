@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sure Park System</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<%
+var userid = session.user_id;
+var username = session.user_name;
+var reserv_code;
+var reserv_sttime;
+var parking_sttime;
+var end_time;
+var charge_fee;
+var spot;
+var branch;
+
+if(results[0] != undefined){
+		reserv_code = results[0].RESERVATION_CODE;
+		reserv_sttime = results[0].RESERVATION_START_TIME;
+		parking_sttime = results[0].PARKING_START_TIME;
+		end_time = results[0].END_TIME;
+		charge_fee = results[0].CHARGED_FEE;
+		spot = results[0].ASSIGNED_PARKING_SPOT;
+		branch = results[0].BRANCH_ID;
+}
+%>
+
+</head>
+<body>
+      <h2 class="ui teal image header">
+      Sure Park System
+    </h2>
+<form class="ui large form" method="get" action="/reservation">
+		<h2><%=username %></br>Welcome!</h2>
+		<%if(results[0] != undefined){%>
+			<div id="test" style="margin-bottom:10px;"></div>
+			<div id="rcode"></div></br>
+		<%} else{%>
+		Your reservation is not found!</br>
+		<%}%>
+		<input type=submit value="Reservation" />
+	</form>
+    </br><a href="/logout">Logout</a>
+</body>
+<script>
+var code="<%=reserv_code%>";
+var string="<%=reserv_sttime %>";
+string=string.substr(5,11);
+var outputForm1 = document.getElementById('test'); 
+outputForm1.innerHTML = "Reservation time : "+string;
+var outputForm2 = document.getElementById('rcode'); 
+outputForm2.innerHTML = "Reservation code : "+code; 
+</script>
+</html>

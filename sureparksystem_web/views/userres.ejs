@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sure Park System</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<% var ihour=parseInt(hour); var
+iday=parseInt(day); var imin=parseInt(min); %>
+<script>
+	function check() {
+		var num;
+		for (var i = 0; i < document.getElementsByName('selpark').length; i++) {
+			if (document.getElementsByName('selpark')[i].checked) {
+				num = document.getElementsByName('selpark')[i].value;
+			}
+		}
+		document.getElementsById('selpark').value = num;
+		alert(num);
+	}
+</script>
+
+</head>
+<body>
+	<h2>Sure Park System</h2>
+	<form method="post" action="/socproc" name="form1">
+		<h1>Parking lots</h1>
+		<h1>Today : <%=hour %>:<%=min %></h1>
+		<table border="1" cellpadding="5">
+			<% for(var i = 0; i < results.length; i++){ %>
+			<tr>
+				<td><input type=radio name="selpark"
+					value="<%=results[i].NUM %>" /></td>
+				<td>Parking lot : <%=results[i].BRANCH_NAME%></td>
+				<td>Address : <%=results[i].BRANCH_ADDR %></td>
+				<td>EXTERNAL_FACILITY</td>
+			</tr>
+			<%}%>
+		</table>
+		<select name="sel1" onchange="selm(this.value);"> <% var i=0;
+			for(i=ihour;i<=ihour+3;i++){%> <%if(i>23){%> <%}else{%>
+			<option value="<%=i %>"><%=i %></option> <%}%> <%}%>
+		</select> <select name="sel2">
+		</select> </br>
+		</br> 
+		<input type="submit" value="Submit" />
+		<input type="button" onclick="history.back();" value="Cancel" />
+
+	</form>
+	</br><a href="/logout">Logout</a>
+</body>
+<script>
+	var day = "<%=day %>";
+	var hour = "<%=ihour %>";
+	var min = "<%=min %>";
+	var frm = document.form1;
+
+	for (var j = 0; j < 60; j++) {
+		var op = new Option();
+		frm.sel2.options.remove(op); // 옵션 추가
+	}
+	for (var j = min; j <= 59; j++) {
+		var op = new Option();
+		op.value = j;
+		op.text = j;
+		frm.sel2.options.add(op);
+	}
+
+	function selm(x) {
+		var jimin = parseInt("<%=imin %>");
+		var y = x;
+		x = parseInt(x);
+		hour = parseInt(hour);
+		x += 1;
+		if (y == hour) {
+			for (var j = 0; j < 60; j++) {
+				var op = new Option();
+				frm.sel2.options.remove(op); // 옵션 추가
+			}
+			for (var j = min; j <= 59; j++) {
+				var op = new Option();
+				op.value = j;
+				op.text = j;
+				frm.sel2.options.add(op);
+			}
+		} else if (x == "<%=i %>") {
+			for (var j = 0; j < 60; j++) {
+				var op = new Option();
+				frm.sel2.options.remove(op); // 옵션 추가
+			}
+			for (var j = 0; j < jimin; j++) {
+				var op = new Option();
+				op.value = j; // 값 설정
+				op.text = j; // 텍스트 설정
+				frm.sel2.options.add(op); // 옵션 추가
+			}
+		} else {
+			for (var j = 0; j < 100; j++) {
+				var op = new Option();
+				frm.sel2.options.remove(op); // 옵션 추가
+			}
+			for (var j = 0; j <= 59; j++) {
+				var op = new Option();
+				op.value = j;
+				op.text = j;
+				frm.sel2.options.add(op);
+			}
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sure Park System</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script>
+function loginchk(){
+ var regx = /^[a-zA-Z0-9]*$/;
+ var id = document.form1.id.value;
+ var pass = document.form1.pw.value;
+ if (id.length == 0 || id == null) {
+  alert("Please enter your ID.");
+  document.form1.id.focus();
+  return false;
+ }else if (!regx.test(id)){
+  alert("Please enter a valid ID.");
+  document.form1.id.focus();
+  return false;
+ }else if (pass.length < 8 || pass == null) {
+  alert("Your password must be at least 8 characters.");
+  document.form1.pass.focus();
+  return false;
+ }else if (!regx.test(pass)){
+  alert("Password only characters or number.");
+  document.form1.pass.focus();
+  return false;
+ }else if (pass.length == 0 || pass == null) {
+	  alert("Please enter your password.");
+	  document.form1.id.focus();
+	  return false;
+	 }
+ 
+ document.form1.submit();
+}
+</script>
+</head>
+<body>
+	<h2>Sure Park System</h2>
+	<form name="form1" method="post" action="/login" style="backgroud-color:#f0f0f0;">
+		<input type="text" name="id" placeholder="ID" style="margin-bottom:10px;"></br>
+		<input type="password" name="pw" placeholder="Password"></br></br>
+		<input type="button" onclick="loginchk();" value="Login" /></br>
+	</form>
+	</br>New to us? <a href="/signup">Sign Up</a>
+</body>
+
+</html>
